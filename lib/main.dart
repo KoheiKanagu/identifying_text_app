@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:identifying_text_app/body_content.dart';
 import 'package:identifying_text_app/header_content.dart';
 
 void main() => runApp(MyApp());
@@ -26,6 +27,18 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        backgroundColor: Colors.blue,
+        label: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            "Identify",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -58,15 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate((context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text("$index"),
-                ),
-              );
+              return BodyContent(index: index);
             }),
           )
         ],
       ),
+      bottomNavigationBar: SizedBox(height: 100),
     );
   }
 }
