@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:identifying_text_app/details_screen.dart';
 import 'package:identifying_text_app/my_content.dart';
 
 class BodyContent extends StatelessWidget {
@@ -42,35 +43,39 @@ class BodyContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      contents[index % 3].title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                child: InkWell(
+                  onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => DetailsScreen())),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        contents[index % 3].title,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      contents[index % 3].content,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey,
+                      SizedBox(height: 8),
+                      Text(
+                        contents[index % 3].content,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 18),
-                    Text(
-                      contents[index % 3].date,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
+                      SizedBox(height: 18),
+                      Text(
+                        contents[index % 3].date,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Column(
